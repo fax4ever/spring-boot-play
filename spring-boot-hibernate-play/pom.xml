@@ -4,17 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>it.redhat.demo</groupId>
+    <parent>
+        <groupId>org.hibernate.search</groupId>
+        <artifactId>hibernate-search-integrationtest</artifactId>
+        <version>6.0.0-SNAPSHOT</version>
+    </parent>
     <artifactId>spring-boot-hibernate-play</artifactId>
-    <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
-
-        <version.hibernate.search>6.0.0-SNAPSHOT</version.hibernate.search>
         <version.spring.boot>2.1.2.RELEASE</version.spring.boot>
     </properties>
 
@@ -22,12 +19,10 @@
         <dependency>
             <groupId>org.hibernate.search</groupId>
             <artifactId>hibernate-search-mapper-orm</artifactId>
-            <version>${version.hibernate.search}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate.search</groupId>
             <artifactId>hibernate-search-backend-elasticsearch</artifactId>
-            <version>${version.hibernate.search}</version>
         </dependency>
 
         <dependency>
@@ -47,6 +42,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${version.spring.boot}</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mockito</groupId>
+                    <artifactId>mockito-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
