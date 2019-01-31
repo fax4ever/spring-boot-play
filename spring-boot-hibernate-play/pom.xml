@@ -13,6 +13,12 @@
 
     <properties>
         <version.org.springframework.boot>2.1.2.RELEASE</version.org.springframework.boot>
+        
+        <!-- Remove Hibernate system property from parent settings: -->
+        <!-- hibernate.connection.* -->
+        <!-- They are supposed to be handled by the spring.datasource subsystem -->
+        <!-- and not by the Hibernate internal pool! -->
+        <failsafe.jvm.args>-Xmx512m -Xms128m</failsafe.jvm.args>
     </properties>
 
     <dependencyManagement>
@@ -51,7 +57,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.178</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
